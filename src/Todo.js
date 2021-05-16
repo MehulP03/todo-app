@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import './Todo.css';
-import {Button, List, ListItem, ListItemAvatar, ListItemText, makeStyles, Modal } from '@material-ui/core';
+import {Button, Container,   List, ListItem, ListItemAvatar, ListItemText, makeStyles, Modal} from '@material-ui/core';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import EditIcon from '@material-ui/icons/Edit';
 import db from './firebase';
@@ -31,6 +31,7 @@ function Todo(props) {
         setOpen(false);
     }
     return (
+        //Open update modal
         <>
         <Modal
         open={open}
@@ -39,11 +40,13 @@ function Todo(props) {
             <div className={classes.paper}>
                 <h1>I am a model</h1>
                 <input placeholder={props.todo.todo} value={input} onChange={event => setInput(event.target.value)} />
-                <Button type='submit' onClick={updateTodo} variant="contained" color="primary">Update Todo</Button>
+                <Button type='submit' onClick={updateTodo} variant="outlined" color="primary">Update Todo</Button>
             </div>
         </Modal>
-
-        <List className="todo_list">
+        
+        
+        <List>  
+        <Container maxWidth="sm">  
             <ListItem>  
                 <ListItemAvatar>
                 </ListItemAvatar>
@@ -51,7 +54,9 @@ function Todo(props) {
                     <EditIcon onClick={e =>setOpen(true)}/>
                     <DeleteForeverIcon onClick={event => db.collection('todos').doc(props.todo.id).delete()} />
             </ListItem>
+            </Container>
         </List>
+        
         </>
     )
 }

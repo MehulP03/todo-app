@@ -5,6 +5,7 @@ import './App.css';
 import db from './firebase';
 import firebase from 'firebase';
 
+
 function App() {
   const [todos, setTodos] = useState([]);
   const [input, setInput] = useState('');
@@ -31,25 +32,26 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Hello Todo App ✅!</h1>
-      
+      <div>
+        <h1>TODO LIST</h1>
+      </div>
       <form>
         <FormControl>
-          <InputLabel>✅Write a Todo</InputLabel>
+          <InputLabel>Add a New task</InputLabel>
           <Input value={input} onChange={event => setInput(event.target.value)} />
         </FormControl>
 
-        <Button disabled={!input} type="submit" onClick={addTodo} variant="contained" color="primary">
+        <Button disabled={!input} type="submit" onClick={addTodo} variant="outlined" color="primary">
           Add Todo
         </Button>
       </form>
 
-      <ul>
-        {todos.map(todo => (
-          <Todo todo={todo} />
-          //<li>{todo}</li>
-        ))}
-      </ul>
+        <ul>
+          {todos.map(todo => (
+            <Todo todo={todo} />
+            //<li>{todo}</li>
+          ))}
+        </ul>
     </div>
   );
 }
