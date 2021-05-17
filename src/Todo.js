@@ -1,9 +1,12 @@
 import React, {useState} from 'react';
 import './Todo.css';
-import {Button, Container,   List, ListItem, ListItemAvatar, ListItemText, makeStyles, Modal} from '@material-ui/core';
+import {Button, Container, List, makeStyles, Modal} from '@material-ui/core';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import EditIcon from '@material-ui/icons/Edit';
 import db from './firebase';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -47,14 +50,19 @@ function Todo(props) {
         
         <List>  
         <Container maxWidth="sm">  
-            <ListItem>  
-                <ListItemAvatar>
-                </ListItemAvatar>
-                <ListItemText primary={props.todo.todo} secondary="Dummy DeadLine.." />
-                    <EditIcon onClick={e =>setOpen(true)}/>
-                    <DeleteForeverIcon onClick={event => db.collection('todos').doc(props.todo.id).delete()} />
-            </ListItem>
-            </Container>
+        <Card>   
+        <CardContent>
+        {props.todo.todo} 
+        </CardContent>        
+        <CardActions>
+            <EditIcon onClick={e =>setOpen(true)}/>
+            <DeleteForeverIcon onClick={event => db.collection('todos').doc(props.todo.id).delete()} />
+      </CardActions>
+                
+        
+                
+        </Card>
+        </Container>
         </List>
         
         </>
