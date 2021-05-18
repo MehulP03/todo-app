@@ -9,6 +9,8 @@ import {
   CardMedia,
   Typography,
 } from "@material-ui/core";
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import db from "../firebase";
 
 
@@ -90,15 +92,20 @@ function Todo(props) {
           </Button>
         </div>
       </Modal>
+      
+
       <Container className={classes.contain}>
         <Card className={classes.root}>
           <div className={classes.details}>
             <CardContent className={classes.content}>
               <Typography component="h5" variant="h5">
                 {props.todo.todo}
+                <EditIcon onClick={e =>setOpen(true)}/>
+
               </Typography>
               <Typography variant="subtitle1" color="textSecondary">
                 Dummy Dedline..
+                <DeleteForeverIcon onClick={event => db.collection('todos').doc(props.todo.id).delete()} />
               </Typography>
             </CardContent>
           </div>
