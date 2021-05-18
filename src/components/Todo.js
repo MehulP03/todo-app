@@ -1,120 +1,45 @@
-import React, { useState } from "react";
-import {
-  Container,
-  Button,
-  makeStyles,
-  Modal,
-  Card,
-  CardContent,
-  CardMedia,
-  Typography,
-} from "@material-ui/core";
-import EditIcon from '@material-ui/icons/Edit';
-import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import React from "react";
+import { Container } from "react-bootstrap";
 import db from "../firebase";
-
-
-const useStyles = makeStyles((theme) => ({
-  contain: {
-      display: 'flex',
-      maxWidth: '1200px',
-      flexDirection: 'row',
-      justifyContent: 'center'
-  },
-  paper: {
-    position: "absolute",
-    width: 400,
-    backgroundColor: theme.palette.background.paper,
-    border: "2px solid #000",
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
-  },
-  root: {
-    display: "flex",
-  },
-  details: {
-    display: "flex",
-    flexDirection: "column",
-  },
-  content: {
-    height: "100px",
-    width: "300px",
-  },
-  cover: {
-    width: 151,
-  },
-  controls: {
-    display: "flex",
-    alignItems: "center",
-    paddingLeft: theme.spacing(1),
-    paddingBottom: theme.spacing(1),
-  },
-  playIcon: {
-    height: 38,
-    width: 38,
-  },
-}));
+import DeleteIcon from "@material-ui/icons/Delete";
+import "../style/Todo.css";
+import UpdateModal from "./UpdateModal";
+import Switch from "@material-ui/core/Switch";
+import { FormControlLabel } from "@material-ui/core";
 
 function Todo(props) {
-  const classes = useStyles();
-  const [open, setOpen] = useState(false);
-  const [input, setInput] = useState();
 
-  const updateTodo = () => {
-    // update the todo with the new input text
-
-    db.collection("todos").doc(props.todo.id).set(
-      {
-        todo: input,
-      },
-      { merge: true }
-    );
-
-    setOpen(false);
-  };
   return (
     <>
-      <Modal open={open} onClose={(e) => setOpen(false)}>
-        <div className={classes.paper}>
-          <h1>I am a model</h1>
-          <input
-            placeholder={props.todo.todo}
-            value={input}
-            onChange={(event) => setInput(event.target.value)}
-          />
-          <Button
-            type="submit"
-            onClick={updateTodo}
-            variant="contained"
-            color="primary"
-          >
-            Update Todo
-          </Button>
+      <Container>
+        <div className="list-group">
+          <a href="#" className="list-group-item list-group-item-action flex-column align-items-start">
+            <div className="d-flex w-100 justify-content-between">
+              <h4 className="mb-1">{props.todo.todo}</h4>
+              <div className="icons">
+                <FormControlLabel
+                  control={
+                    <Switch
+                      color="secondary"
+                      className="switch"
+                    />
+                  }
+                />
+                <UpdateModal todo={props.todo} />
+                <DeleteIcon
+                  className="icon"
+                  onClick={(event) =>
+                    db.collection("todos").doc(props.todo.id).delete()
+                  }
+                />
+              </div>
+            </div>
+            <p className="mb-1">
+              Donec id elit non mi porta gravida at eget metus. Maecenas sed
+              diam eget risus varius blandit.
+            </p>
+          </a>
         </div>
-      </Modal>
-      
-
-      <Container className={classes.contain}>
-        <Card className={classes.root}>
-          <div className={classes.details}>
-            <CardContent className={classes.content}>
-              <Typography component="h5" variant="h5">
-                {props.todo.todo}
-                <EditIcon onClick={e =>setOpen(true)}/>
-
-              </Typography>
-              <Typography variant="subtitle1" color="textSecondary">
-                Dummy Dedline..
-                <DeleteForeverIcon onClick={event => db.collection('todos').doc(props.todo.id).delete()} />
-              </Typography>
-            </CardContent>
-          </div>
-          <CardMedia
-            className={classes.cover}
-            image="/img/cardimg.jpg"
-            title="Live from space album cover"
-          />
-        </Card>
       </Container>
     </>
   );

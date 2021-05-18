@@ -1,36 +1,19 @@
-import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
+import React from "react";
+import { Jumbotron, Container } from "react-bootstrap";
+import "../style/navbar.css";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  title: {
-    flexGrow: 1,
-    display: 'none',
-    [theme.breakpoints.up('sm')]: {
-      display: 'block',
-    },
-    textAlign: 'left',
-    fontFamily: 'cursive'
-  },
-}));
-
-export default function Navbar() {
-  const classes = useStyles();
-
+export default function TopNavbar() {
   return (
-    <div className={classes.root}>
-      <AppBar position="sticky">
-        <Toolbar>
-          <Typography className={classes.title} variant="h3" noWrap>
-            To-Do App
-          </Typography>
-        </Toolbar>
-      </AppBar>
-    </div>
+    <>
+      <Jumbotron fluid className="jumbo">
+        <Container>
+          <h1>Fluid jumbotron</h1>
+          <p>
+            This is a modified jumbotron that occupies the entire horizontal
+            space of its parent.
+          </p>
+        </Container>
+      </Jumbotron>
+    </>
   );
 }

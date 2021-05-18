@@ -1,0 +1,29 @@
+.list-group{
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;    
+}
+.mb-1{
+    text-align: left;
+    margin-top: 5px;
+}
+.list-group{
+    margin-top: 25px;
+    margin-bottom: 25px;
+    min-height: 75px;
+}
+.icon{
+    color: red;
+    cursor: pointer;
+}
+.iicon{
+    color: blue;
+    cursor: pointer;
+    margin-right: 10px;
+}
+.switch{
+    align-items: flex-start;
+}
+.icons{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
