@@ -24,7 +24,7 @@ export default function Navbar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="fixed">
+      <AppBar position="sticky">
         <Toolbar>
           <Typography className={classes.title} variant="h3" noWrap>
             To-Do App
