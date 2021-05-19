@@ -13,7 +13,7 @@ function Todo(props) {
     <>
       <Container>
         <div className="list-group">
-          <a href="#" className="list-group-item list-group-item-action flex-column align-items-start">
+          <div className="list-group-item list-group-item-action flex-column align-items-start">
             <div className="d-flex w-100 justify-content-between">
               <h4 className="mb-1">{props.todo.todo}</h4>
               <div className="icons">
@@ -38,7 +38,7 @@ function Todo(props) {
               Donec id elit non mi porta gravida at eget metus. Maecenas sed
               diam eget risus varius blandit.
             </p>
-          </a>
+          </div>
         </div>
       </Container>
     </>
