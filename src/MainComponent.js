@@ -124,7 +124,7 @@ function Main() {
                 <br />
                 <TextField
                   id="double"
-                  label="Discription"
+                  label="Description"
                   placeholder="Type Your Discription"
                   value={desc}
                   onChange={(event) => setDesc(event.target.value)}
