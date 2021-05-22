@@ -25,7 +25,7 @@ function Todo(props) {
                     />
                   }
                 />
-                <UpdateModal todo={props.todo} />
+                <UpdateModal todo={props.todo} desc={props.desc} />
                 <DeleteIcon
                   className="icon"
                   onClick={(event) =>
@@ -35,8 +35,7 @@ function Todo(props) {
               </div>
             </div>
             <p className="mb-1">
-              Donec id elit non mi porta gravida at eget metus. Maecenas sed
-              diam eget risus varius blandit.
+              {props.todo.desc}
             </p>
           </div>
         </div>
