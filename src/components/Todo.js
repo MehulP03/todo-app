@@ -7,14 +7,6 @@ import UpdateModal from "./UpdateModal";
 
 function Todo(props) {
 
-  // const [btnText, setbtnText] = useState('Pending');
-  // const [textColor, setColor] = useState('#8B0000');
-
-  // const handleBtnChange=()=>{
-  //   setbtnText('completed');
-  //   setColor('#00FF00');
-  // }
-
   return (
     <>
       <Container>

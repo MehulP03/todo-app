@@ -52,8 +52,6 @@ function Main() {
   const [desc, setDesc] = useState();
   const [todos, setTodos] = useState([]);
   
-  var date = new Date();
-  var formatedDate = `${date.getMonth()+1}-${date.getDate()}-${date.getFullYear()}`
 
   // const [input, setInput] = useState("");
 
@@ -130,7 +128,7 @@ function Main() {
                 <TextField
                   id="double"
                   label="Description"
-                  placeholder="Type Your description"
+                  placeholder="Type Your Discription"
                   value={desc}
                   onChange={(event) => setDesc(event.target.value)}
                   className={classes.input}
