@@ -94,7 +94,7 @@ export default function UpdateModal(props) {
               <TextField
                   id="double"
                   label="Discription"
-                  placeholder="Type Your Discription"
+                  placeholder={props.todo.desc}
                   value={desc}
                   onChange={(event) => setDesc(event.target.value)}
                   className={classes.input}

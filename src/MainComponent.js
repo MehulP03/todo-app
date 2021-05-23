@@ -50,7 +50,12 @@ function Main() {
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState();
   const [desc, setDesc] = useState();
-  const [todos, setTodos] = useState([]); // const [input, setInput] = useState("");
+  const [todos, setTodos] = useState([]);
+  
+  var date = new Date();
+  var formatedDate = `${date.getMonth()+1}-${date.getDate()}-${date.getFullYear()}`
+
+  // const [input, setInput] = useState("");
 
   //when the app koads, we need to listen to the database and fetch new todos as the get added/removed
   useEffect(() => {
@@ -119,18 +124,18 @@ function Main() {
                   value={input}
                   onChange={(event) => setInput(event.target.value)}
                   className={classes.input}
-                  required
                 />
+                <br />
                 <br />
                 <TextField
                   id="double"
                   label="Description"
-                  placeholder="Type Your Discription"
+                  placeholder="Type Your description"
                   value={desc}
                   onChange={(event) => setDesc(event.target.value)}
                   className={classes.input}
-                  required
                 />
+                <br />
                 <br />
                 <Button
                   className={classes.submit}
@@ -156,6 +161,6 @@ function Main() {
       <Bottom />
     </>
   );
-      }
+}
 
 export default Main;

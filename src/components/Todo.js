@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container } from "react-bootstrap";
 import db from "../firebase";
 import DeleteIcon from "@material-ui/icons/Delete";
 import "../style/Todo.css";
 import UpdateModal from "./UpdateModal";
-import Switch from "@material-ui/core/Switch";
-import { FormControlLabel } from "@material-ui/core";
 
 function Todo(props) {
+
+  // const [btnText, setbtnText] = useState('Pending');
+  // const [textColor, setColor] = useState('#8B0000');
+
+  // const handleBtnChange=()=>{
+  //   setbtnText('completed');
+  //   setColor('#00FF00');
+  // }
 
   return (
     <>
@@ -17,14 +23,7 @@ function Todo(props) {
             <div className="d-flex w-100 justify-content-between">
               <h4 className="mb-1">{props.todo.todo}</h4>
               <div className="icons">
-                <FormControlLabel
-                  control={
-                    <Switch
-                      color="secondary"
-                      className="switch"
-                    />
-                  }
-                />
+                {/* <button style={{ color:{textColor}, borderRadius:'15px'}} onClick={handleBtnChange} type="button" class="btn btn-info">{btnText}</button> */}
                 <UpdateModal todo={props.todo} desc={props.desc} />
                 <DeleteIcon
                   className="icon"
