@@ -41,9 +41,9 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 export default function UpdateModal(props) {
-  const [input, setInput] = useState();
+  const [input, setInput] = useState('');
   const [open, setOpen] = React.useState(false);
-  const [desc, setDesc] = useState();
+  const [desc, setDesc] = useState('');
   const classes = useStyles();
 
   const updateTodo = (event) => {
@@ -51,8 +51,8 @@ export default function UpdateModal(props) {
     // update the todo with the new input text
     db.collection("todos").doc(props.todo.id).set(
       {
-        todo: input,
-        disc: desc,
+        disc:desc,
+        todo:input
       },
       { merge: true }
     );
@@ -89,18 +89,16 @@ export default function UpdateModal(props) {
                 value={input}
                 onChange={(event) => setInput(event.target.value)}
                 className={classes.input}
-                required
               /><br/>
               <TextField
-                  id="double"
-                  label="Discription"
-                  placeholder={props.todo.desc}
-                  value={desc}
-                  onChange={(event) => setDesc(event.target.value)}
-                  className={classes.input}
-                  required
-                />
-                <br />
+                id="double"
+                label="Description"
+                placeholder={props.todo.desc}
+                value={desc}
+                onChange={(event) => setDesc(event.target.value)}
+                className={classes.input}
+              />
+              <br />
               <Button
                 className={classes.submit}
                 type="submit"
