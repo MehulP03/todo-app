@@ -2,7 +2,7 @@ import friebase from "firebase";
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
+const firebaseApp = {
   apiKey: "AIzaSyDDUUVzqqJfIrH6jWG7wzboG4nECXpB5_s",
   authDomain: "todo-app1m.firebaseapp.com",
   projectId: "todo-app1m",
